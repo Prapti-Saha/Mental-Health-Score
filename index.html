@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindPulse – Student Mental Health Assessment</title>
+  <meta name="description" content="Estimate a mental health score from your social media habits, sleep, study and stress levels.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#assessment">Skip to assessment</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top">
+        <svg class="brand-icon" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M4 17h6l3-7 5 13 3-6h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>MindPulse</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#assessment">Assessment</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>How are your daily habits<br>shaping your wellbeing?</h1>
+        <p class="hero-text">Answer 12 short questions about your social media use, sleep, study and stress. Our machine-learning model returns an estimated mental health score in seconds.</p>
+        <a class="btn btn-primary" href="#assessment">Start the assessment</a>
+        <p class="hero-note">Takes about two minutes. Nothing you enter is stored in your browser.</p>
+      </div>
+    </section>
+
+    <section class="assessment" id="assessment" aria-labelledby="assessment-title">
+      <div class="card form-card" id="form-card">
+        <h2 id="assessment-title" tabindex="-1">Your assessment</h2>
+        <p class="card-intro">Fields marked <span class="required-mark" aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+
+        <div id="form-alert" class="alert" role="alert" hidden></div>
+
+        <form id="assessment-form" novalidate>
+          <fieldset class="section">
+            <legend>About you</legend>
+
+            <div class="field">
+              <label for="Age">Age <span class="required-mark" aria-hidden="true">*</span></label>
+              <input type="number" id="Age" name="Age" inputmode="numeric" min="10" max="100" step="1" placeholder="e.g. 20" required aria-describedby="hint-Age error-Age">
+              <p class="hint" id="hint-Age">Whole number between 10 and 100.</p>
+              <p class="error" id="error-Age"></p>
+            </div>
+
+            <fieldset class="field choice-group" aria-describedby="error-Gender" data-field="Gender">
+              <legend>Gender <span class="required-mark" aria-hidden="true">*</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="Gender" value="Male"><span>Male</span></label>
+                <label class="choice"><input type="radio" name="Gender" value="Female"><span>Female</span></label>
+              </div>
+              <p class="error" id="error-Gender"></p>
+            </fieldset>
+
+            <div class="field">
+              <label for="Country">Country <span class="required-mark" aria-hidden="true">*</span></label>
+              <select id="Country" name="Country" required aria-describedby="hint-Country error-Country">
+                <option value="" selected disabled>Select your country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+                <option value="UK">UK</option>
+                <option value="Germany">Germany</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Turkey">Turkey</option>
+                <option value="France">France</option>
+                <option value="Other">Other</option>
+              </select>
+              <p class="hint" id="hint-Country">Choose “Other” if your country is not listed.</p>
+              <p class="error" id="error-Country"></p>
+            </div>
+
+            <div class="field">
+              <label for="Academic_Level">Academic level <span class="required-mark" aria-hidden="true">*</span></label>
+              <select id="Academic_Level" name="Academic_Level" required aria-describedby="error-Academic_Level">
+                <option value="" selected disabled>Select your level</option>
+                <option value="High School">High School</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Graduate">Graduate</option>
+              </select>
+              <p class="error" id="error-Academic_Level"></p>
+            </div>
+          </fieldset>
+
+          <fieldset class="section">
+            <legend>Social media habits</legend>
+
+            <div class="field">
+              <label for="Most_Used_Platform">Most used platform <span class="required-mark" aria-hidden="true">*</span></label>
+              <select id="Most_Used_Platform" name="Most_Used_Platform" required aria-describedby="error-Most_Used_Platform">
+                <option value="" selected disabled>Select a platform</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Instagram">Instagram</option>
+                <option value="KakaoTalk">KakaoTalk</option>
+                <option value="LINE">LINE</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Snapchat">Snapchat</option>
+                <option value="TikTok">TikTok</option>
+                <option value="Twitter">Twitter</option>
+                <option value="VKontakte">VKontakte</option>
+                <option value="WeChat">WeChat</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="YouTube">YouTube</option>
+              </select>
+              <p class="error" id="error-Most_Used_Platform"></p>
+            </div>
+
+            <fieldset class="field choice-group" aria-describedby="error-Purpose_Of_Use" data-field="Purpose_Of_Use">
+              <legend>Main purpose of use <span class="required-mark" aria-hidden="true">*</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="Purpose_Of_Use" value="Networking"><span>Networking</span></label>
+                <label class="choice"><input type="radio" name="Purpose_Of_Use" value="Education"><span>Education</span></label>
+                <label class="choice"><input type="radio" name="Purpose_Of_Use" value="Entertainment"><span>Entertainment</span></label>
+                <label class="choice"><input type="radio" name="Purpose_Of_Use" value="News"><span>News</span></label>
+              </div>
+              <p class="error" id="error-Purpose_Of_Use"></p>
+            </fieldset>
+
+            <div class="field">
+              <label for="Avg_Daily_Usage_Hours">Average daily usage (hours) <span class="required-mark" aria-hidden="true">*</span></label>
+              <input type="number" id="Avg_Daily_Usage_Hours" name="Avg_Daily_Usage_Hours" inputmode="decimal" min="0" max="24" step="0.1" placeholder="e.g. 4.5" required aria-describedby="hint-Avg_Daily_Usage_Hours error-Avg_Daily_Usage_Hours">
+              <p class="hint" id="hint-Avg_Daily_Usage_Hours">Between 0 and 24 hours.</p>
+              <p class="error" id="error-Avg_Daily_Usage_Hours"></p>
+            </div>
+
+            <div class="field">
+              <label for="Daily_Unlocks">Phone unlocks per day <span class="required-mark" aria-hidden="true">*</span></label>
+              <input type="number" id="Daily_Unlocks" name="Daily_Unlocks" inputmode="numeric" min="0" step="1" placeholder="e.g. 80" required aria-describedby="hint-Daily_Unlocks error-Daily_Unlocks">
+              <p class="hint" id="hint-Daily_Unlocks">Whole number, 0 or more. Your phone’s screen-time settings can show this.</p>
+              <p class="error" id="error-Daily_Unlocks"></p>
+            </div>
+          </fieldset>
+
+          <fieldset class="section">
+            <legend>Daily routine and stress</legend>
+
+            <div class="field">
+              <label for="Study_Hours">Study hours per day <span class="required-mark" aria-hidden="true">*</span></label>
+              <input type="number" id="Study_Hours" name="Study_Hours" inputmode="decimal" min="0" max="24" step="0.1" placeholder="e.g. 3" required aria-describedby="hint-Study_Hours error-Study_Hours">
+              <p class="hint" id="hint-Study_Hours">Between 0 and 24 hours.</p>
+              <p class="error" id="error-Study_Hours"></p>
+            </div>
+
+            <div class="field">
+              <label for="Physical_Activity_Hours">Physical activity hours per day <span class="required-mark" aria-hidden="true">*</span></label>
+              <input type="number" id="Physical_Activity_Hours" name="Physical_Activity_Hours" inputmode="decimal" min="0" max="24" step="0.1" placeholder="e.g. 1" required aria-describedby="hint-Physical_Activity_Hours error-Physical_Activity_Hours">
+              <p class="hint" id="hint-Physical_Activity_Hours">Between 0 and 24 hours.</p>
+              <p class="error" id="error-Physical_Activity_Hours"></p>
+            </div>
+
+            <div class="field">
+              <label for="Sleep_Hours_Per_Night">Sleep hours per night <span class="required-mark" aria-hidden="true">*</span></label>
+              <input type="number" id="Sleep_Hours_Per_Night" name="Sleep_Hours_Per_Night" inputmode="decimal" min="0" max="24" step="0.1" placeholder="e.g. 7" required aria-describedby="hint-Sleep_Hours_Per_Night error-Sleep_Hours_Per_Night">
+              <p class="hint" id="hint-Sleep_Hours_Per_Night">Between 0 and 24 hours.</p>
+              <p class="error" id="error-Sleep_Hours_Per_Night"></p>
+            </div>
+
+            <fieldset class="field choice-group" aria-describedby="error-Stress_Level" data-field="Stress_Level">
+              <legend>Current stress level <span class="required-mark" aria-hidden="true">*</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="Stress_Level" value="Low"><span>Low</span></label>
+                <label class="choice"><input type="radio" name="Stress_Level" value="Medium"><span>Medium</span></label>
+                <label class="choice"><input type="radio" name="Stress_Level" value="High"><span>High</span></label>
+                <label class="choice"><input type="radio" name="Stress_Level" value="Very High"><span>Very High</span></label>
+              </div>
+              <p class="error" id="error-Stress_Level"></p>
+            </fieldset>
+          </fieldset>
+
+          <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
+            <span class="btn-label">Get my result</span>
+          </button>
+          <p class="dev-note">During development, your answers are sent to the local server at <code>127.0.0.1:8000</code>.</p>
+        </form>
+
+        <div class="loading" id="loading" role="status" aria-live="polite" hidden>
+          <div class="spinner" aria-hidden="true"></div>
+          <p>Analyzing your responses...</p>
+        </div>
+      </div>
+
+      <div class="card result-card" id="result-card" role="region" aria-labelledby="result-title" tabindex="-1" hidden>
+        <h2 id="result-title">Your Assessment Result</h2>
+        <p class="result-label">Predicted mental health score</p>
+        <p class="result-score" id="result-score" aria-live="polite"></p>
+        <p class="result-message">This number is an estimate produced by a model trained on survey data about students’ habits. It reflects patterns in that data, not a judgment about you. Use it as a prompt to reflect on your sleep, activity, screen time and stress.</p>
+        <p class="result-disclaimer">This result is informational only. It is not a medical diagnosis and does not replace an assessment by a qualified mental health professional.</p>
+        <button type="button" class="btn btn-secondary" id="reset-btn">Take another assessment</button>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About this tool</h2>
+      <p>MindPulse sends your answers to a Random Forest regression model running on a local FastAPI server. The model uses your age, gender, country group, academic level, platform, purpose of use, usage hours, unlocks, study, activity and sleep hours, and stress level.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Disclaimer:</strong> MindPulse is an educational project. Results are not a diagnosis or medical advice. If you are struggling, please contact a qualified professional or a local helpline.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
