@@ -184,7 +184,7 @@
           <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
             <span class="btn-label">Get my result</span>
           </button>
-          <p class="dev-note">During development, your answers are sent to the local server at <code>127.0.0.1:8000</code>.</p>
+          <p class="dev-note">Your answers are sent securely to the prediction server to calculate your score. They are not saved.</p>
         </form>
 
         <div class="loading" id="loading" role="status" aria-live="polite" hidden>
@@ -205,7 +205,7 @@
 
     <section class="about" id="about" aria-labelledby="about-title">
       <h2 id="about-title">About this tool</h2>
-      <p>MindPulse sends your answers to a Random Forest regression model running on a local FastAPI server. The model uses your age, gender, country group, academic level, platform, purpose of use, usage hours, unlocks, study, activity and sleep hours, and stress level.</p>
+      <p>MindPulse sends your answers to a Random Forest regression model running on a FastAPI server. The model uses your age, gender, country group, academic level, platform, purpose of use, usage hours, unlocks, study, activity and sleep hours, and stress level.</p>
     </section>
   </main>
 

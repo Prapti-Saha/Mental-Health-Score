@@ -4,7 +4,10 @@
   // ----- Configuration -----
   const API_BASE_URL = "https://mental-health-score-2emn.onrender.com";
   const PREDICT_URL = `${API_BASE_URL}/predict`;
-  const REQUEST_TIMEOUT_MS = 20000;
+  const REQUEST_TIMEOUT_MS = 60000;
+
+  // Wake the backend early (Render free tier sleeps when idle)
+  fetch(`${API_BASE_URL}/`).catch(() => {});
 
   // Field definitions mirror the FastAPI StudentData schema exactly.
   const FIELDS = [
@@ -161,7 +164,7 @@
       if (error.name === "AbortError") {
         throw new ApiError("The request took too long. Please try again in a moment.");
       }
-      throw new ApiError("Cannot reach the prediction server. Make sure the FastAPI backend is running at 127.0.0.1:8000.");
+      throw new ApiError("Cannot reach the prediction server. Please try again in a minute.");
     } finally {
       clearTimeout(timer);
     }
